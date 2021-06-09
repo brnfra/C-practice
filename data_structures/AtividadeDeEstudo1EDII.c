@@ -232,16 +232,10 @@ void print_tree(){
             
         }
 
-
-
-
-
-
     }else{
         printf("\n%s\n","Arvore não pode ser impressa. Indice é maior que o tamanho da arvore."); 
     }
     printf("\n"); 
-    
         
 }
 
@@ -330,47 +324,9 @@ int main(int argc, char *argv[]) {
     int dir = 0, esq = 0;
     //pause var     
     char hangOn[1];
-
-    indice = 0;
-    temp = indice;
-
-    tree_insert(0,'A',R);
-    
-    tree_insert(tree_search('A'),'B',E);
-    tree_insert(tree_search('A'),'C',D);
-    
-    tree_insert(tree_search('B'),'D',E);
-    tree_insert(tree_search('B'),'E',D);
-    
-    tree_insert(tree_search('C'),'F',E);
-    tree_insert(tree_search('C'),'G',D);
-
-    tree_insert(tree_search('D'),'H',E);
-    tree_insert(tree_search('D'),'I',D);
-    
-    tree_insert(tree_search('E'),'J',E);
-    tree_insert(tree_search('E'),'K',D);
-
-    tree_insert(tree_search('F'),'L',E);
-    tree_insert(tree_search('F'),'M',D);
-    
-    tree_insert(tree_search('G'),'N',E);
-    tree_insert(tree_search('G'),'O',D);
-
-    tree_insert(tree_search('N'),'3',E);
-    tree_insert(tree_search('N'),'4',D);
-
-    tree_insert(tree_search('O'),'5',E);
-    tree_insert(tree_search('O'),'6',D);
-
-    tree_insert(tree_search('H'),'1',E);
-    tree_insert(tree_search('H'),'2',D);
-   
+ 
     do{
-
     menu_mostrar(indice);
-    
-   
 
     printf("\n%s\n\n","Arvore atual:");
     print_tree();
@@ -433,8 +389,6 @@ int main(int argc, char *argv[]) {
                     scanf("%1[^\n]s", hangOn);
                     fflush(stdin);
                     clear();
-
-
                     break;
                 }
   
