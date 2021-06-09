@@ -123,7 +123,7 @@ void print_tree(){
                                      
                     if(tree[esq].data != '\0'){
                         // espaço entre elementos do mesmo pai
-                        printf("/",tree[esq].data);
+                        printf("/");
                             for(j=((indice*3)/k)+1;j>0;j--){
                                 printf("%s"," ");                        
                             }
@@ -131,7 +131,7 @@ void print_tree(){
                         
                     // imprime a direita  
                         if(tree[dir].data != '\0'){
-                          printf("\\",tree[dir].data); 
+                          printf("\\"); 
 
                         // espaço entre elementos de pais diferentes
                         for(j=((indice*3)/k)-1;j>0;j--){
