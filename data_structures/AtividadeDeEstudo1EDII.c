@@ -87,157 +87,199 @@ void print_subtree(int noh ){
 
   }
 
+//proc serve print_tree
+void tab(int espaco){
+      int j=0;
+      for(j=espaco;j>0;j--){
+            printf("%s"," ");
+      }
+}
+//proc serve print_tree
+void elementos_noh(int digitos, int esq, int dir){
+    int j = 0;
+    if(tree[esq].data != '\0' || tree[dir].data != '\0' ){
+         
+         // espaço entre elementos do mesmo pai 
+         printf("|");
+        for(j=digitos;j>0;j--){
+             printf("%s","-");                        
+        }
+
+    }else{
+         //debug
+        printf("_");
+        
+        for(j=digitos;j>0;j--){
+            printf("%s"," ");                        
+        }
+    }
+}
+
 
 void print_tree(){
-    int i=0,j=0,aux=0,k=2,l=0,esq=0,spc=0, dir=0;
-   printf("\n%s\n","Mapa da Árvore e respectivos nós.");  
+    int i=0,j=0,aux=0,k=2,l=0,esq=0, dir=0;
+    int base = indice* 4;
+
+    int espaco = (base/2);
+   printf("\n%s\n","Mapa da Árvore e respectivos nós.");
       for(i;i<=indice;i++){
-          //base da piramide é o maior indice  
-      
+          //base da piramide é o maior indice
+          //problema qnd maior indice não for da extrema direita
+
           //raiz imprime apenas uma vez
           if(i==0){
-                //falta ajustar centro para raiz
-                for(j=((indice)*5/4);j>0;j--){
-                      printf("%s"," ");
-                 }
+
+              tab(2*espaco/k-3);
               printf("%s\f","(root)");
-              printf("\b\b\b%c\n",tree[0].data);   
-                for(j=(indice)*5/4;j>0;j--){
-                 printf("%s"," ");
-                 }
-             printf("\n\n"); 
-          
-          }else if( (i % 2 == 0) && (i > 0) && (k<tamanho) ){
-            //inicio da linha
-            for(j=((indice)/k)+4;j>0;j--){
-                printf("%s"," ");
-            }
+              printf("\b\b\b%c\f",tree[0].data);
+              printf("\b%s","|");
 
-             //imprime indicacao de nohs
-            for(aux=k; aux > 0  ; aux=aux-2){
-                
-                    esq = 2*l + 1;
-                    dir = 2*l + 2; 
-                   
-                   // imprime elemento a esquerda
-                                     
-                    if(tree[esq].data != '\0'){
-                        // espaço entre elementos do mesmo pai
-                        printf("/");
-                            for(j=((indice*3)/k)+1;j>0;j--){
-                                printf("%s"," ");                        
-                            }
-                    }
-                        
-                    // imprime a direita  
-                        if(tree[dir].data != '\0'){
-                          printf("\\"); 
+              printf("\n");
 
-                        // espaço entre elementos de pais diferentes
-                        for(j=((indice*3)/k)-1;j>0;j--){
-                              printf("%-s"," ");
-                        }   
-                    }
-                           
-                 
-            }
-            printf("\n");  
-           
+          }else if( (i % 2 == 0) && (i > 0) && (k < tamanho) ){
+            //inicio da linha, calculo dos espaços!
+            tab(espaco/k);
 
-            //inicio da linha, novamente, apos a impressao
-            for(j=((indice)/k)+4;j>0;j--){
-                printf("%s"," ");
-            }
-             //imprime elementos por altura
-            for(aux=k; aux > 0  ; aux=aux-2){
-                
-                    esq = 2*l + 1;
-                    dir = 2*l + 2; 
-                   
-                   // imprime elemento a esquerda                  
-                          if(tree[esq].data == '\0'){
-                              printf("%-s"," ");
-                            for(j=((indice*3)/k)+1;j>0;j--){
-                                printf("%s"," ");                        
-                             }
+           //evita impressao apos ultimo no impresso
+            if(dir<=indice){
 
-                          }else{
-                                // espaço entre elementos do mesmo pai 
-                                printf("%c",tree[esq].data);
-                                for(j=((indice*3)/k)+1;j>0;j--){
-                                    printf("%s","-");                        
-                                }
+                //imprime indicacao de nohs
+                for(aux=k; aux >0 ; aux=aux-2){
 
-                          }
-                            
-                    // imprime a direita  
-                    
-                    if(tree[dir].data == '\0')
+                    // imprime elemento a esquerda
+                        elementos_noh((2*espaco)/k, esq, dir);
+                        printf("|");
+                        tab(2*espaco/k);
+
+                }
+
+                //pula apos a impressao das indicacoes
+                printf("\n");
+
+                //inicio da linha, novamente, apos a impressao
+                tab(espaco/k);
+
+                //imprime elementos por altura (problema qnd l é impar)
+                for(aux=k; aux > 0  ; aux=aux-2){
+
+                        esq = 2*l + 1;
+                        dir = 2*l + 2;
+
+                        // imprime elemento a esquerda
+                        if(tree[esq].data == '\0')
                             printf("%-s"," ");
-                    else
-                         printf("%-c",tree[dir].data); 
+                        else
+                            printf("%c",tree[esq].data);
 
+                        // espaço entre elementos do mesmo pai
+                        tab(2*espaco/k);
+
+                        // imprime a direita
+                        if(tree[dir].data == '\0')
+                                printf("%-s"," ");
+                        else
+                            printf("%-c",tree[dir].data);
 
                         // espaço entre elementos de pais diferentes
-                    for(j=((indice*3)/k)-1;j>0;j--){
-                        printf("%-s"," ");
+                        tab(2*espaco/k);
+                         //## contador L esq e dir dependem de l
+                         l++;
+
+
+                }
+
+                //pula apos impressao dos elementos
+                printf("\n");
+
+                //inicio da linha, novamente, apos a impressao
+                tab(espaco/k);
+
+                //imprime indicação de noh apos impressao dos nos
+                for(aux=k; aux > 0  ; aux=aux-2){
+
+
+
+                    if(dir < indice && esq <= indice){
+                    // imprime elemento a esquerda
+                        if(tree[esq].data == '\0')
+                            printf("%-s"," ");
+                        else
+                            printf("%s","|");
+
+                          // espaço entre elementos do mesmo pai
+                             tab(2*espaco/k);
+
+                        // imprime a direita
+                        if(tree[dir].data == '\0')
+                                printf("%-s"," ");
+                        else
+                            printf("%-s","|");
+
+                         // espaço entre elementos de pais diferentes
+                         tab(2*espaco/k);
                     }
 
-                    
-                    l++;  
-                   
-            }
-              
-             
-            if(tree[esq].data != '\0')
-              printf("\n\n");
 
-            k*=2;  
-              
+                }
+
+                printf("\n");
+
+            }
+
+              printf("\n");
+              k*=2;
+              //encurta loop
+            if( k > indice )
+                    break;
+
           }
-            
+
+
       }
-      
-   printf("\n%s\n","Árvore atual indexada.");  
+
+   printf("\n%s\n","Árvore atual indexada.");
     if(indice < tamanho){
         //1- half
         for (int i = 0; i<=indice/2; i++){
-             printf("%s%3d%-2s","|" ,i,"|"); 
-            
+             printf("%s%3d%-2s","|" ,i,"|");
+
             }
-        printf("\n"); 
+        printf("\n");
         for (int i = 0; i<=indice/2; i++){
-            
+
             if(tree[i].data == '\0' ){
-              printf("%s%3c%-2s","|" ,'-',"|"); 
+              printf("%s%3c%-2s","|" ,'-',"|");
             }else{
-              printf("%s%3c%-2s","|" ,tree[i].data,"|"); 
+              printf("%s%3c%-2s","|" ,tree[i].data,"|");
             }
-            
+
         }
         printf("\n\n");
         //2- half
         for (int i = indice/2+1; i<=indice; i++){
-             printf("%s%3d%-2s","|" ,i,"|"); 
-            
+             printf("%s%3d%-2s","|" ,i,"|");
+
             }
-        printf("\n"); 
+        printf("\n");
         for (int i = indice/2+1; i<=indice; i++){
-            
+
             if(tree[i].data == '\0' ){
-              printf("%s%3c%-2s","|" ,'-',"|"); 
+              printf("%s%3c%-2s","|" ,'-',"|");
             }else{
-              printf("%s%3c%-2s","|" ,tree[i].data,"|"); 
+              printf("%s%3c%-2s","|" ,tree[i].data,"|");
             }
-            
+
         }
 
+
     }else{
-        printf("\n%s\n","Arvore não pode ser impressa. Indice é maior que o tamanho da arvore."); 
+        printf("\n%s\n","Arvore não pode ser impressa. Indice é maior que o tamanho da arvore.");
     }
-    printf("\n"); 
-        
+    printf("\n");
+
+
 }
+
 
 // procurando o noh - retorna o indice do elemento
 int tree_search( char dado){
