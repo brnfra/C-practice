@@ -117,10 +117,24 @@ void elementos_noh(int digitos, int esq, int dir){
 
 
 void print_tree(){
+    
     int i=0,j=0,aux=0,k=2,l=0,esq=0, dir=0;
-    int base = indice* 4;
 
-    int espaco = (base/2);
+    //ajuste para posicao da base da arvore
+    int base = 0;
+    int espaco = 0;
+
+    if(indice%2!=0){
+        indice++;
+        base = (indice)* 4;
+        espaco = (base/2);  
+    }else{
+        base = indice* 4;
+        espaco = (base/2);
+    }
+
+
+    
    printf("\n%s\n","Mapa da Árvore e respectivos nós.");
       for(i;i<=indice;i++){
           //base da piramide é o maior indice
@@ -276,7 +290,8 @@ void print_tree(){
         printf("\n%s\n","Arvore não pode ser impressa. Indice é maior que o tamanho da arvore.");
     }
     printf("\n");
-
+  if(indice%2!=0)
+        indice--;
 
 }
 
@@ -366,7 +381,7 @@ int main(int argc, char *argv[]) {
     int dir = 0, esq = 0;
     //pause var     
     char hangOn[1];
- 
+
     do{
     menu_mostrar(indice);
 
