@@ -150,7 +150,7 @@ void print_tree(){
 
               printf("\n");
 
-          }else if( (i % 2 == 0) && (i > 0) && (k < tamanho) ){
+          }else{
             //inicio da linha, calculo dos espaços!
             tab(espaco/k);
 
