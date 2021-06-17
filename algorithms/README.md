@@ -1,6 +1,6 @@
-#Atividade Pratica
+# Atividade Pratica
 
-##Prática de programação em C
+## Prática de programação em C
 
 - Programa que simula esquema de votação de urna eletrônica simplificada
 - Contabiliza e exibe porcentagens de votos de cada candidato e voto nulo em ordem decrescente de votos
