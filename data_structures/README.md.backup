@@ -1,8 +1,0 @@
-# Atividade Pratica
-
-## Atividade de estudo em linguagem C
-
-- Função para imprimir arvore binaria estática na forma vertical
-- Método simples, não ideal de pesquisa e inserção na árvore binária
- 
-A cada inserção programa exibe a árvore atualizada em modo gráfico e indexada no limite de 30
