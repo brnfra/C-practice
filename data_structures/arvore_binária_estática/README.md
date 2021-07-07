@@ -10,10 +10,10 @@ Exemplo:
 
 ```bash 
  (root)
- 	  A
-      |
- |-------|        
-C		    B
+    A
+    |
+|-----|        
+C     B
 
 Arvore indexada;
 
