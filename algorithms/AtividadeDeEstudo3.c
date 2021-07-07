@@ -127,7 +127,7 @@ void opcoes() {
 }
 /*}}}*/
 
-/* Procedimento para verificar se as cartelas sao válidas {{{*/
+/* Função para verificar se as cartelas sao válidas {{{*/
 int checarCartelas(int cartela[]){
     int i, j;
     for ( i = 0; i < TCARTELA; i++){
@@ -144,7 +144,7 @@ int checarCartelas(int cartela[]){
 /*}}}*/
 
 /*
-Função para imprimir cartelas {{{
+Procedimento para imprimir cartelas {{{
 */
 void printCartelas(int nCartelas){
      int i=0, j=0, check=100;
